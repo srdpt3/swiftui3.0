@@ -24,7 +24,7 @@ struct BaseView: View {
                 Text("Search")
                     .tag("magnifyingglass")
                 
-                Text("Account")
+                Text("test")
                     .tag("person.fill")
                 
                 

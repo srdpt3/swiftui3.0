@@ -106,7 +106,7 @@ struct CardView: View{
             Image(car.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 180, height: 180)
+                .frame(width: 200, height: 200)
         }
         .padding(.horizontal)
         .padding(.vertical,6)
