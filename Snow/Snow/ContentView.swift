@@ -6,80 +6,67 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
+        SnowView()
+                   .background(Color.black)
+       
     }
+    
+    
+    
+}
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
 
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+struct SnowView: UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> some UIView {
+        
+        let screenSize = UIScreen.main.bounds
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
+        view.layer.masksToBounds = true
+        
+        let emitterLayer = CAEmitterLayer()
+        emitterLayer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        emitterLayer.emitterShape = .circle
+        emitterLayer.emitterPosition = CGPoint(x: screenSize.width/2, y: -100)
+        
+        emitterLayer.emitterMode = .surface
+        emitterLayer.renderMode = .oldestLast
+        
+        let cell = CAEmitterCell()
+        cell.birthRate = 100
+        cell.lifetime = 10
+        cell.velocity = 100
+        cell.scale = 0.1
+        cell.emissionRange = CGFloat.pi
+        
+        cell.contents = UIImage(named: "snowflake")?.cgImage
+        
+        let cell2 = CAEmitterCell()
+        cell2.birthRate = 100
+        cell2.lifetime = 10
+        cell2.velocity = 100
+        cell2.scale = 0.1
+        cell2.emissionRange = CGFloat.pi
+        
+        cell2.contents = UIImage(named: "test")?.cgImage
+        
+        emitterLayer.emitterCells = [cell]
+        view.layer.addSublayer(emitterLayer)
+        
+        return view
+        
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
