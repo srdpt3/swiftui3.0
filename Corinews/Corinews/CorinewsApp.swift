@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CorinewsApp: App {
+    
+    @StateObject var articleBookmarkVM = ArticleBookmarkViewModel.shared
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(articleBookmarkVM)
         }
     }
 }

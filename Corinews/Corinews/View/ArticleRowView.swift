@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ArticleRowView: View {
     
-//    @EnvironmentObject var articleBookmarkVM: ArticleBookmarkViewModel
+    @EnvironmentObject var articleBookmarkVM: ArticleBookmarkViewModel
     
     let article: Article
     var body: some View {
@@ -64,11 +64,11 @@ struct ArticleRowView: View {
                     Spacer()
 
                     Button {
-//                        toggleBookmark(for: article)
+                        toggleBookmark(for: article)
                     } label: {
-                        Image(systemName:  "bookmark")
+//                        Image(systemName:  "bookmark")
 
-//                        Image(systemName: articleBookmarkVM.isBookmarked(for: article) ? "bookmark.fill" : "bookmark")
+                       Image(systemName: articleBookmarkVM.isBookmarked(for: article) ? "bookmark.fill" : "bookmark")
                     }
                     .buttonStyle(.bordered)
 
@@ -85,13 +85,13 @@ struct ArticleRowView: View {
         }
     }
     
-//    private func toggleBookmark(for article: Article) {
-//        if articleBookmarkVM.isBookmarked(for: article) {
-//            articleBookmarkVM.removeBookmark(for: article)
-//        } else {
-//            articleBookmarkVM.addBookmark(for: article)
-//        }
-//    }
+    private func toggleBookmark(for article: Article) {
+        if articleBookmarkVM.isBookmarked(for: article) {
+            articleBookmarkVM.removeBookmark(for: article)
+        } else {
+            articleBookmarkVM.addBookmark(for: article)
+        }
+    }
 }
 
 extension View {
@@ -108,7 +108,7 @@ extension View {
 
 struct ArticleRowView_Previews: PreviewProvider {
     
-//    @StateObject static var articleBookmarkVM = ArticleBookmarkViewModel.shared
+    @StateObject static var articleBookmarkVM = ArticleBookmarkViewModel.shared
 
     static var previews: some View {
         NavigationView {
@@ -118,6 +118,6 @@ struct ArticleRowView_Previews: PreviewProvider {
             }
             .listStyle(.plain)
         }
-//        .environmentObject(articleBookmarkVM)
+        .environmentObject(articleBookmarkVM)
     }
 }

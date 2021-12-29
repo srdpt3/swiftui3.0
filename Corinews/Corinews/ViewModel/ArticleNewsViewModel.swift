@@ -27,7 +27,7 @@ class ArticleNewsViewModel: ObservableObject {
     @Published var fetchTaskToken: FetchTaskToken
     private let newsAPI = NewsAPI.shared
     
-    init(articles: [Article]? = nil, selectedCategory: Category = .general) {
+    init(articles: [Article]? = nil, selectedCategory: Category = .technology) {
         if let articles = articles {
             self.phase = .success(articles)
         } else {

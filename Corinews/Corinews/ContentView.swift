@@ -12,18 +12,18 @@ struct ContentView: View {
         TabView {
             NewsTabView()
                 .tabItem {
-                    Label("News", systemImage: "newspaper")
+                    Label("뉴스", systemImage: "newspaper")
                 }
             
-            //                   SearchTabView()
-            //                       .tabItem {
-            //                           Label("Search", systemImage: "magnifyingglass")
-            //                       }
-            //
-            //                   BookmarkTabView()
-            //                       .tabItem {
-            //                           Label("Saved", systemImage: "bookmark")
-            //                       }
+            SearchTabView()
+                .tabItem {
+                    Label("검색", systemImage: "magnifyingglass")
+                }
+            
+            BookmarkTabView()
+                .tabItem {
+                    Label("북마크", systemImage: "bookmark")
+                }
         }
     }
 }

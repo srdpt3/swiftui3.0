@@ -5,16 +5,51 @@
 //  Created by Dustin yang on 12/27/21.
 //
 
+
 import SwiftUI
 
-struct ArticleBookmarkViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+@MainActor
+class ArticleBookmarkViewModel: ObservableObject {
+    
+    @Published private(set) var bookmarks: [Article] = []
+    private let bookmarkStore = PlistDataStore<[Article]>(filename: "bookmarks")
+    
+    static let shared = ArticleBookmarkViewModel()
+    private init() {
+        Task {
+            await load()
+        }
     }
-}
-
-struct ArticleBookmarkViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        ArticleBookmarkViewModel()
+    
+    private func load() async {
+        bookmarks = await bookmarkStore.load() ?? []
+    }
+    
+    func isBookmarked(for article: Article) -> Bool {
+        bookmarks.first { article.id == $0.id } != nil
+    }
+    
+    func addBookmark(for article: Article) {
+        guard !isBookmarked(for: article) else {
+            return
+        }
+        
+        bookmarks.insert(article, at: 0)
+        bookmarkUpdated()
+    }
+    
+    func removeBookmark(for article: Article) {
+        guard let index = bookmarks.firstIndex(where: { $0.id == article.id }) else {
+            return
+        }
+        bookmarks.remove(at: index)
+        bookmarkUpdated()
+    }
+    
+    private func bookmarkUpdated() {
+        let bookmarks = self.bookmarks
+        Task {
+            await bookmarkStore.save(bookmarks)
+        }
     }
 }

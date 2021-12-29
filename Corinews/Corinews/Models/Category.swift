@@ -23,7 +23,7 @@ enum Category: String, CaseIterable {
             return "비지니스"
         }
         if self == .technology {
-            return "테크"
+            return "코인뉴스"
         }
         if self == .entertainment {
             return "엔터"
