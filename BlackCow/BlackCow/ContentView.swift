@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
+    @AppStorage("log_status") var log_Status = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        ZStack{
+            if log_Status{
+                Home()
+            }
+            else{
+                BoardingView()
+            }
+        }
     }
 }
