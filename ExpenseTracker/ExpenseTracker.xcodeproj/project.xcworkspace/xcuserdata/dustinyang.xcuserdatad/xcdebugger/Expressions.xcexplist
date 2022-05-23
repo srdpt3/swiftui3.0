@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ExpenseViewModel.init():ExpenseViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "calendar.date(from: components)">
+            </PersistentString>
+            <PersistentString
+               value = "Date()">
+            </PersistentString>
+            <PersistentString
+               value = "calendar.date(from: components)!">
+            </PersistentString>
+            <PersistentString
+               value = "startDate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
