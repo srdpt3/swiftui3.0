@@ -9,31 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack{
-            Color.theme.background.ignoresSafeArea()
-            VStack{
-                Text("Accent Color").foregroundColor(Color.theme.green)
-            }
-        }
+       HomeView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
     }
 }
 
-extension Color {
-    static let theme = ColorTheme()
-}
-
-
-
-struct ColorTheme {
-    let accent = Color("AccentColor")
-    let background = Color("BackgroundColor")
-    let green = Color("GreenColor")
-    let red = Color("RedColor")
-    let secondaryText = Color("SecondaryTextColor")
-}
