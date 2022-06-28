@@ -10,13 +10,16 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var shorPortfolio : Bool = false
-    
+    @EnvironmentObject
     var body: some View {
         ZStack{
             Color.theme.background.ignoresSafeArea()
             
             VStack{
                 homeHeader
+                List{
+                    CoinRowView(coin: DeveloperPreview.instance.coin, showHoldingColumn: false)
+                }.listStyle(PlainListStyle())
                 Spacer(minLength: 0)
             }
         }

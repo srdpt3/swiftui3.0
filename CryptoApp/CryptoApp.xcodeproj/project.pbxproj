@@ -19,6 +19,7 @@
 		111E197228640BBA0021FEE8 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111E197128640BBA0021FEE8 /* CoinRowView.swift */; };
 		111E197428640BFB0021FEE8 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111E197328640BFB0021FEE8 /* PreviewProvider.swift */; };
 		111E197628640F590021FEE8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111E197528640F590021FEE8 /* Double.swift */; };
+		111E19792867E7AA0021FEE8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111E19782867E7AA0021FEE8 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		111E197128640BBA0021FEE8 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		111E197328640BFB0021FEE8 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		111E197528640F590021FEE8 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		111E19782867E7AA0021FEE8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		111E196D28640B7B0021FEE8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				111E19772867E79C0021FEE8 /* ViewModels */,
 				111E196E28640B930021FEE8 /* Views */,
 			);
 			path = Home;
@@ -147,6 +150,14 @@
 				111E197128640BBA0021FEE8 /* CoinRowView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		111E19772867E79C0021FEE8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				111E19782867E7AA0021FEE8 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				111E197228640BBA0021FEE8 /* CoinRowView.swift in Sources */,
+				111E19792867E7AA0021FEE8 /* HomeViewModel.swift in Sources */,
 				111E1969286158170021FEE8 /* CirculeButtonAnimationView.swift in Sources */,
 				111E1942286111F10021FEE8 /* ContentView.swift in Sources */,
 				111E196328611E060021FEE8 /* HomeView.swift in Sources */,
